@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: password123
       POSTGRES_DB: university_db
     ports:
-      -  "5433:5432" 
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -22,6 +22,19 @@ services:
       - "6333:6333" # API
     volumes:
       - qdrant_data:/qdrant/storage
+
+  # Backend API (FastAPI)
+  api:
+    build: .
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://admin:password123@db:5432/university_db
+      - QDRANT_URL=http://qdrant:6333
+    depends_on:
+      - db
+      - qdrant
 
 volumes:
   postgres_data:
