@@ -1,0 +1,28 @@
+Contenu d'exemple pour le chatbot universitaire
+
+Introduction
+Ce document présente les fonctionnalités du chatbot universitaire. Le système permet d'ingérer des documents PDF et de répondre aux questions des utilisateurs en se basant sur le contenu indexé.
+
+Fonctionnalités principales
+- Upload de documents PDF
+- Extraction automatique du texte
+- Division en chunks pour l'indexation
+- Recherche vectorielle avec Qdrant
+- Génération de réponses avec un modèle de langage (à implémenter)
+
+Architecture technique
+- Frontend: Application Flutter
+- Backend: API FastAPI avec Python
+- Base de données vectorielle: Qdrant
+- Base de données relationnelle: PostgreSQL
+- Modèle d'embeddings: Sentence Transformers (all-MiniLM-L6-v2)
+
+Étapes d'utilisation
+1. Uploader un document PDF via l'endpoint /api/v1/documents/upload
+2. Le système traite le document en arrière-plan
+3. Les chunks sont indexés dans Qdrant
+4. L'utilisateur peut poser des questions (endpoint à implémenter)
+5. Le système recherche les chunks pertinents et génère une réponse
+
+Conclusion
+Ce système RAG permet de créer un chatbot intelligent capable de répondre aux questions basées sur des documents spécifiques, utile pour l'éducation universitaire.
